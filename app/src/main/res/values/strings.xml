@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MultipleChoice</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="question_1">Number ONE</string>
+    <string name="question_2">Number TWO</string>
+    <string name="question_3">Number THREE</string>
+    <string name="question_4">Number FOUR</string>
+    <string name="question_5">Number FIVE</string>
+
+</resources>
