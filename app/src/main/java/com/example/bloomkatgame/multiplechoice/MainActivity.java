@@ -59,6 +59,9 @@ public class MainActivity extends ActionBarActivity {
         Log.d(TAG, "onCreate() called");
         setContentView(R.layout.activity_game);
 
+        //wiring the imageQuestion
+        imageQuestion = (TextView)findViewById(R.id.image_view);
+
         //wiring the buttons
         choiceButton1 = (Button)findViewById(R.id.choice_button1);
         choiceButton1.setOnClickListener(new View.OnClickListener() {
@@ -139,9 +142,6 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
