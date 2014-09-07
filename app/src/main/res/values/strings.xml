@@ -3,6 +3,8 @@
 
     <string name="app_name">MultipleChoice</string>
     <string name="hello_world">Hello world!</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
     <string name="action_settings">Settings</string>
     <string name="question_1">Number ONE</string>
     <string name="question_2">Number TWO</string>
