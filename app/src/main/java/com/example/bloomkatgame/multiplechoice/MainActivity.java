@@ -86,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
-                updateQuestion();
+
             }
         });
 
@@ -95,9 +95,9 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
-                updateQuestion();
             }
         });
+        updateQuestion();
     }
 
     @Override
