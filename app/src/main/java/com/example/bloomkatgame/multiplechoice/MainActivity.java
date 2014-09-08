@@ -1,5 +1,6 @@
 package com.example.bloomkatgame.multiplechoice;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,43 +16,44 @@ public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = "MainActivity";
 
-    //Declaring button variables
-    Button choiceButton1;
-    Button choiceButton2;
-    Button choiceButton3;
-    Button choiceButton4;
+        //Declaring button variables
+        Button choiceButton1;
+        Button choiceButton2;
+        Button choiceButton3;
+        Button choiceButton4;
 
-    TextView imageQuestion;
+        TextView imageQuestion;
 
-    TrueFalseChoices[] answerKey = new TrueFalseChoices[]{
-            new TrueFalseChoices(R.string.question_1, true),
-            new TrueFalseChoices(R.string.question_2, true),
-            new TrueFalseChoices(R.string.question_3, true),
-            new TrueFalseChoices(R.string.question_4, true),
-            new TrueFalseChoices(R.string.question_5, true)
-    };
+        TrueFalseChoices[] answerKey = new TrueFalseChoices[]{
+                new TrueFalseChoices(R.string.question_1, true),
+                new TrueFalseChoices(R.string.question_2, true),
+                new TrueFalseChoices(R.string.question_3, true),
+                new TrueFalseChoices(R.string.question_4, true),
+                new TrueFalseChoices(R.string.question_5, true)
+        };
 
-    //update imageQuestion
-    int currentIndex = 0;
+        //update imageQuestion
+        int currentIndex = 0;
 
-    private void updateQuestion(){
-        int question = answerKey[currentIndex].getImageQuestion();
-        imageQuestion.setText(question);
-    }
-
-    //Check the answer of the imageQuestion
-    private void checkAnswer(boolean userPressedTrue){
-        boolean answerIsTrue = answerKey[currentIndex].isTrueQuestion();
-
-        int imageResId = 0;
-
-        if(userPressedTrue == answerIsTrue){
-            imageResId = R.string.correct_toast;
-        }else{
-            imageResId = R.string.incorrect_toast;
+        private void updateQuestion(){
+            int question = answerKey[currentIndex].getImageQuestion();
+            imageQuestion.setText(question);
+            currentIndex = (currentIndex + 1) % answerKey.length;
         }
-        Toast.makeText(this, imageResId, Toast.LENGTH_SHORT).show();
-    }
+
+        //Check the answer of the imageQuestion
+        private void checkAnswer(boolean userPressedTrue){
+            boolean answerIsTrue = answerKey[currentIndex].isTrueQuestion();
+
+            int imageResId = 0;
+
+            if(userPressedTrue == answerIsTrue){
+                imageResId = R.string.correct_toast;
+            }else{
+                imageResId = R.string.incorrect_toast;
+            }
+            Toast.makeText(this, imageResId, Toast.LENGTH_SHORT).show();
+        }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,14 +79,13 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
-                updateQuestion();
             }
         });
         choiceButton3 = (Button)findViewById(R.id.choice_button3);
         choiceButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(true);
+                checkAnswer(false);
                 updateQuestion();
             }
         });
@@ -136,12 +137,12 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    @Override
+/*    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
-    }
+    }*/
 }
