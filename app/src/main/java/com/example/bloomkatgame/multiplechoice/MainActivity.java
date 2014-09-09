@@ -32,6 +32,12 @@ public class MainActivity extends ActionBarActivity {
                 new TrueFalseChoices(R.string.question_5, true)
         };
 
+        //Assign each button an index in the array.
+        private allButtonChoice[] multipleChoice = new allButtonChoice[]{
+            new allButtonChoice(choiceButton1)
+        }
+
+
         //update imageQuestion
         int currentIndex = 0;
 
