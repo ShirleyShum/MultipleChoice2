@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -33,8 +35,26 @@ public class MainActivity extends ActionBarActivity {
         };
 
         //Assign each button an index in the array.
-        private allButtonChoice[] multipleChoice = new allButtonChoice[]{
+        //the array that will hold the four buttons.
+/*        private allButtonChoice[] multipleChoice = new allButtonChoice[]{
             new allButtonChoice(choiceButton1)
+        }*/
+        private void allButtonChoice(){
+            Button[] multiChoice = new Button[3];
+            multiChoice = new Button[]{choiceButton1,choiceButton2,choiceButton3,choiceButton4};
+
+            //to output shuffled array in an randomized order.
+            //Random number generator.
+
+            Random generateMultiChoice = new Random();
+
+            for(int i = 0; i < multiChoice.length; i++){
+                int randomPosition = generateMultiChoice.nextInt(multiChoice.length);
+                Button temp = multiChoice[i];
+                multiChoice[i] = multiChoice[randomPosition];
+                multiChoice[randomPosition] = temp;
+            }
+            //return multiChoice;
         }
 
 
@@ -77,6 +97,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 checkAnswer(true);
                 updateQuestion();
+                allButtonChoice();
             }
         });
 
@@ -104,6 +125,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         updateQuestion();
+        allButtonChoice();
+
     }
 
     @Override

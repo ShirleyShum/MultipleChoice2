@@ -19,7 +19,7 @@ public class TrueFalseChoices {
         trueImageQuestion = trueQuestion;
     }
 
-    //Created this method so that I can use it in MainActivity and create an array out of this.
+    //Created this method so that I can use it in MainActivity and create an array to hold the 4 buttons.
     public void allButtonChoice(boolean buttons){
         allButtons = buttons;
 
