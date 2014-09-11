@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 
 
@@ -34,13 +35,15 @@ public class MainActivity extends ActionBarActivity {
                 new TrueFalseChoices(R.string.question_5, true)
         };
 
+    Button[] multiChoice = new Button[3];
+
         //Assign each button an index in the array.
         //the array that will hold the four buttons.
 /*        private allButtonChoice[] multipleChoice = new allButtonChoice[]{
             new allButtonChoice(choiceButton1)
         }*/
-        private void allButtonChoice(){
-            Button[] multiChoice = new Button[3];
+        public void allButtonChoice(){
+            //Button[] multiChoice = new Button[3];
             multiChoice = new Button[]{choiceButton1,choiceButton2,choiceButton3,choiceButton4};
 
             //to output shuffled array in an randomized order.
@@ -55,6 +58,21 @@ public class MainActivity extends ActionBarActivity {
                 multiChoice[randomPosition] = temp;
             }
             //return multiChoice;
+            //set the positions to the buttons in order
+
+            //(Button) multiChoice[0] = choiceButton1.setX(10);
+            choiceButton1.setPadding(20,10,20,10);
+            choiceButton2.setPadding(20,20,20,20);
+            choiceButton3.setPadding(20,10,20,10);
+            choiceButton4.setPadding(20,20,20,20);
+
+            choiceButton1.setX(13f) = Math.random()* multiChoice.length;
+            choiceButton1.setY() = Math.random()* multiChoice.length;
+            choiceButton2.setX() = Math.random()* multiChoice.length;
+            choiceButton2.setY() = Math.random()* multiChoice.length;
+/*            int buttonsPositionY = (int) multiChoice.setY();
+            int buttonsPositionX = (int) multiChoice.setX();*/
+
         }
 
 
@@ -92,6 +110,7 @@ public class MainActivity extends ActionBarActivity {
 
         //wiring the buttons
         choiceButton1 = (Button)findViewById(R.id.choice_button1);
+
         choiceButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +119,6 @@ public class MainActivity extends ActionBarActivity {
                 allButtonChoice();
             }
         });
-
         choiceButton2 = (Button)findViewById(R.id.choice_button2);
         choiceButton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +126,7 @@ public class MainActivity extends ActionBarActivity {
                 checkAnswer(false);
             }
         });
+
         choiceButton3 = (Button)findViewById(R.id.choice_button3);
         choiceButton3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +143,8 @@ public class MainActivity extends ActionBarActivity {
                 checkAnswer(false);
             }
         });
+
+
         updateQuestion();
         allButtonChoice();
 
