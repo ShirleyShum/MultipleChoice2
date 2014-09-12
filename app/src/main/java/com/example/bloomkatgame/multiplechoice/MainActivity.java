@@ -39,9 +39,6 @@ public class MainActivity extends ActionBarActivity {
 
         //Assign each button an index in the array.
         //the array that will hold the four buttons.
-/*        private allButtonChoice[] multipleChoice = new allButtonChoice[]{
-            new allButtonChoice(choiceButton1)
-        }*/
         public void allButtonChoice(){
             //Button[] multiChoice = new Button[3];
             multiChoice = new Button[]{choiceButton1,choiceButton2,choiceButton3,choiceButton4};
@@ -59,28 +56,19 @@ public class MainActivity extends ActionBarActivity {
             }
             //return multiChoice;
             //set the positions to the buttons in order
-
-            //(Button) multiChoice[0] = choiceButton1.setX(10);
-/*            choiceButton1.setPadding(20,10,20,10);
-            choiceButton2.setPadding(20,20,20,20);
-            choiceButton3.setPadding(20,10,20,10);
-            choiceButton4.setPadding(20,20,20,20);*/
-/*
-            choiceButton1.setX(13f) = generateMultiChoice.nextFloat(multiChoice.length);
-            choiceButton1.setY(13f) = Math.random()* multiChoice.length;
-            choiceButton2.setX(12f) = Math.random()* multiChoice.length;
-            choiceButton2.setY(12f) = Math.random()* multiChoice.length;
-*/
             choiceButton1.setX(10f);
             choiceButton1.setY(10f);
             choiceButton2.setX(10f);
             choiceButton2.setY(10f);
             choiceButton3.setX(10f);
-            choiceButton3.setY(10f);
+            choiceButton3.setY(12f);
             choiceButton4.setX(10f);
-            choiceButton4.setY(10f);
+            choiceButton4.setY(12f);
 
-
+            //Assign X and Y coordinates to the random.
+            for(int i = 0; i <= (multiChoice.length); i++){
+                int positions = generateMultiChoice.nextInt(multiChoice.length);
+            }
 
         }
 
