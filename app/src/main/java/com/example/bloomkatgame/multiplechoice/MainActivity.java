@@ -61,17 +61,26 @@ public class MainActivity extends ActionBarActivity {
             //set the positions to the buttons in order
 
             //(Button) multiChoice[0] = choiceButton1.setX(10);
-            choiceButton1.setPadding(20,10,20,10);
+/*            choiceButton1.setPadding(20,10,20,10);
             choiceButton2.setPadding(20,20,20,20);
             choiceButton3.setPadding(20,10,20,10);
-            choiceButton4.setPadding(20,20,20,20);
+            choiceButton4.setPadding(20,20,20,20);*/
+/*
+            choiceButton1.setX(13f) = generateMultiChoice.nextFloat(multiChoice.length);
+            choiceButton1.setY(13f) = Math.random()* multiChoice.length;
+            choiceButton2.setX(12f) = Math.random()* multiChoice.length;
+            choiceButton2.setY(12f) = Math.random()* multiChoice.length;
+*/
+            choiceButton1.setX(10f);
+            choiceButton1.setY(10f);
+            choiceButton2.setX(10f);
+            choiceButton2.setY(10f);
+            choiceButton3.setX(10f);
+            choiceButton3.setY(10f);
+            choiceButton4.setX(10f);
+            choiceButton4.setY(10f);
 
-            choiceButton1.setX(13f) = Math.random()* multiChoice.length;
-            choiceButton1.setY() = Math.random()* multiChoice.length;
-            choiceButton2.setX() = Math.random()* multiChoice.length;
-            choiceButton2.setY() = Math.random()* multiChoice.length;
-/*            int buttonsPositionY = (int) multiChoice.setY();
-            int buttonsPositionX = (int) multiChoice.setX();*/
+
 
         }
 
@@ -145,8 +154,11 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
+
         updateQuestion();
         allButtonChoice();
+
+
 
     }
 
