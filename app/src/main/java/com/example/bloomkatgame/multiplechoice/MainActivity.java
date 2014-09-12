@@ -56,19 +56,64 @@ public class MainActivity extends ActionBarActivity {
             }
             //return multiChoice;
             //set the positions to the buttons in order
-            choiceButton1.setX(10f);
-            choiceButton1.setY(10f);
-            choiceButton2.setX(10f);
-            choiceButton2.setY(10f);
-            choiceButton3.setX(10f);
-            choiceButton3.setY(12f);
-            choiceButton4.setX(10f);
-            choiceButton4.setY(12f);
+
+            float[]values = new float[3];
+            values[0] = '1';
+            values[1] = '2';
+            values[2] = '3';
+            values[3] = '4';
 
             //Assign X and Y coordinates to the random.
-            for(int i = 0; i <= (multiChoice.length); i++){
-                int positions = generateMultiChoice.nextInt(multiChoice.length);
+
+            for(float i = 0; i <= (values.length); i++) {
+                float positions = generateMultiChoice.nextInt(values.length);
+/*            for(float row = 0; row < 3; row++)
+                for(float col = 0; col < 3; col++){
+                float positions = generateMultiChoice.nextInt(values[row][col]);*/
+
+                if(positions == 1){
+                    choiceButton1.setX(10f);
+                    choiceButton1.setY(10f);
+                }else if (positions == 2){
+                    choiceButton2.setX(261f);
+                    choiceButton2.setY(10f);
+                }else if (positions == 3){
+                    choiceButton3.setX(10f);
+                    choiceButton3.setY(12f);
+                }else{
+                    choiceButton4.setX(261f);
+                    choiceButton4.setY(12f);
+                }
+
             }
+/*            choiceButton1.setX(10f);
+            choiceButton1.setY(10f);
+            choiceButton2.setX(261f);
+            choiceButton2.setY(10f);
+            choiceButton3.setX(10f);
+            choiceButton3.setY(10f);
+            choiceButton4.setX(261f);
+            choiceButton4.setY(10f);
+
+            choiceButton1.setTag(choiceButton1);*/
+
+/*            for(float row = 0; row < 3; row++)
+                for(float col = 0; col < 3; col++){
+
+
+                    int positions = generateMultiChoice.nextInt(values.length);
+                }*/
+/*
+            for(int i = 0; i <= (multiChoice.length); i++){
+               int positions = generateMultiChoice.nextInt(multiChoice.length);
+                */
+/*if(!(multiChoice.length).contains(positions)){
+                    (multiChoice.length).add(positions);*//*
+
+                }
+            }
+*/
+
 
         }
 
@@ -114,6 +159,7 @@ public class MainActivity extends ActionBarActivity {
                 checkAnswer(true);
                 updateQuestion();
                 allButtonChoice();
+
             }
         });
         choiceButton2 = (Button)findViewById(R.id.choice_button2);

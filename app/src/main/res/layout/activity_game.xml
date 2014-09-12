@@ -28,26 +28,26 @@
         android:layout_height="wrap_content"
         android:text="New Button2"
         android:id="@+id/choice_button2" />
+ </LinearLayout>
 
-    </LinearLayout>
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:gravity="center"
+         android:orientation="horizontal">
 
-
-<LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <Button
+         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Button3"
             android:id="@+id/choice_button3" />
 
-        <Button
+         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Button4"
             android:id="@+id/choice_button4" />
+
 
     </LinearLayout>
 </LinearLayout>
