@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -40,12 +42,11 @@ public class MainActivity extends ActionBarActivity {
         //Assign each button an index in the array.
         //the array that will hold the four buttons.
         public void allButtonChoice(){
-            //Button[] multiChoice = new Button[3];
+
             multiChoice = new Button[]{choiceButton1,choiceButton2,choiceButton3,choiceButton4};
 
             //to output shuffled array in an randomized order.
             //Random number generator.
-
             Random generateMultiChoice = new Random();
 
             for(int i = 0; i < multiChoice.length; i++){
@@ -54,69 +55,40 @@ public class MainActivity extends ActionBarActivity {
                 multiChoice[i] = multiChoice[randomPosition];
                 multiChoice[randomPosition] = temp;
             }
+
             //return multiChoice;
             //set the positions to the buttons in order
-
-            float[]values = new float[3];
+            int[] values = new int[4];
             values[0] = '1';
             values[1] = '2';
             values[2] = '3';
             values[3] = '4';
 
+
             //Assign X and Y coordinates to the random.
+            for(int i = 0; i <= (values.length); i++){
+                int positions = generateMultiChoice.nextInt(values.length);
+/*                int tempPosition = values[i];
+                values[i] = values[positions];
+                values[positions] = tempPosition;*/
 
-            for(float i = 0; i <= (values.length); i++) {
-                float positions = generateMultiChoice.nextInt(values.length);
-/*            for(float row = 0; row < 3; row++)
-                for(float col = 0; col < 3; col++){
-                float positions = generateMultiChoice.nextInt(values[row][col]);*/
-
-                if(positions == 1){
-                    choiceButton1.setX(10f);
-                    choiceButton1.setY(10f);
-                }else if (positions == 2){
-                    choiceButton2.setX(261f);
-                    choiceButton2.setY(10f);
-                }else if (positions == 3){
-                    choiceButton3.setX(10f);
-                    choiceButton3.setY(12f);
+                if(positions == values[0]){
+                    choiceButton1.setLeft(2);
+                    choiceButton1.setTop(2);
+                }else if (positions == values[1]){
+                    choiceButton2.setLeft(250);
+                    choiceButton2.setTop(2);
+                }else if (positions == values[3]){
+                    choiceButton3.setLeft(2);
+                    choiceButton3.setTop(2);
                 }else{
-                    choiceButton4.setX(261f);
-                    choiceButton4.setY(12f);
+                    choiceButton4.setLeft(250);
+                    choiceButton4.setTop(2);
                 }
 
             }
-/*            choiceButton1.setX(10f);
-            choiceButton1.setY(10f);
-            choiceButton2.setX(261f);
-            choiceButton2.setY(10f);
-            choiceButton3.setX(10f);
-            choiceButton3.setY(10f);
-            choiceButton4.setX(261f);
-            choiceButton4.setY(10f);
-
-            choiceButton1.setTag(choiceButton1);*/
-
-/*            for(float row = 0; row < 3; row++)
-                for(float col = 0; col < 3; col++){
-
-
-                    int positions = generateMultiChoice.nextInt(values.length);
-                }*/
-/*
-            for(int i = 0; i <= (multiChoice.length); i++){
-               int positions = generateMultiChoice.nextInt(multiChoice.length);
-                */
-/*if(!(multiChoice.length).contains(positions)){
-                    (multiChoice.length).add(positions);*//*
-
-                }
-            }
-*/
-
 
         }
-
 
         //update imageQuestion
         int currentIndex = 0;
@@ -167,6 +139,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+                allButtonChoice();
             }
         });
 
@@ -175,7 +148,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
-
+                allButtonChoice();
             }
         });
 
@@ -184,6 +157,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+                allButtonChoice();
             }
         });
 
