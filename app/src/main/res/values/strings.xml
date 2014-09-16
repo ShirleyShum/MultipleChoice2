@@ -12,4 +12,9 @@
     <string name="question_4">Number FOUR</string>
     <string name="question_5">Number FIVE</string>
 
+    <string name="answser_1">Answer 1</string>
+    <string name="answser_2">Answer 2</string>
+    <string name="answser_3">Answer 3</string>
+    <string name="answser_4">Answer 4</string>
+
 </resources>
