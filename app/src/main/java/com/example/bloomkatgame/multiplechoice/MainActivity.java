@@ -32,7 +32,11 @@ public class MainActivity extends ActionBarActivity {
 
         TextView imageQuestion;
 
-        //The question that will be display.
+        //Make an array of four buttons.
+        private static final int[] idButtonArray = {R.id.choice_button1,R.id.choice_button2, R.id.choice_button3, R.id.choice_button4};
+        private Button[] buttonArray = new Button[idButtonArray.length];
+
+    //The question that will be display.
         TrueFalseChoices[] questionKey = new TrueFalseChoices[]{
                 new TrueFalseChoices(R.string.question_1, true),
                 new TrueFalseChoices(R.string.question_2, true),
@@ -55,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
         //the array that will hold the four buttons.
         public void allButtonChoice(){
 
-            //multiChoice = new Button[]{choiceButton1,choiceButton2,choiceButton3,choiceButton4};
+
 
             //to output shuffled array in an randomized order.
             //Random number generator.
@@ -79,8 +83,8 @@ public class MainActivity extends ActionBarActivity {
 
 
             //Assign X and Y coordinates to the random.
-            for(int i = 0; i <= (values.length); i++){
-                int positions = generateMultiChoice.nextInt(values.length);
+/*            for(int i = 0; i <= (values.length); i++){
+                int positions = generateMultiChoice.nextInt(values.length);*/
 
 /*                int tempPosition = values[i];
                 values[i] = values[positions];
@@ -97,25 +101,9 @@ public class MainActivity extends ActionBarActivity {
                 choiceButton4.setLeft(250);
                 choiceButton4.setTop(2);
 
-                if(positions == 0){
-                    choiceButton1.getLeft();
-                    choiceButton1.getTop();
-                    System.out.println("Button 1");
-                }else if (positions == 1){
-                    choiceButton2.getLeft();
-                    choiceButton2.getTop();
-                    System.out.println("Button 2");
-                }else if (positions == 2){
-                    choiceButton3.getLeft();
-                    choiceButton3.getTop();
-                    System.out.println("Button 3");
-                }else{
-                    choiceButton4.getLeft();
-                    choiceButton4.getTop();
-                    System.out.println("Button 4");
                 }*/
 
-                if(positions == 0){
+/*                if(positions == 0){
                     choiceButton1.setLeft(2);
                     choiceButton1.setTop(2);
                     System.out.println("Button 1");
@@ -133,7 +121,7 @@ public class MainActivity extends ActionBarActivity {
                     System.out.println("Button 4");
                 }
 
-            }
+            }*/
 
 /*            List<Integer> objects = new ArrayList<Integer>();
             objects.add(0);
@@ -154,6 +142,36 @@ public class MainActivity extends ActionBarActivity {
                 buttons.get(i).setText(objects.get(i).toString());
 
             }*/
+
+
+            //Make an arrayList that holds four buttons.
+            List<Button> multiChoice = new ArrayList<Button>();
+            multiChoice.add(choiceButton1);
+            multiChoice.add(choiceButton2);
+            multiChoice.add(choiceButton3);
+            multiChoice.add(choiceButton4);
+
+            //Shuffle collection
+            Collections.shuffle(multiChoice);
+
+            //Create an array of the possible coordinates.
+            //Shuffle the array coordinates to the buttons using setLeft and setTop
+            List<Integer> leftCoord = new ArrayList<Integer>();
+            leftCoord.add(2);
+            leftCoord.add(250);
+            leftCoord.add(2);
+            leftCoord.add(250);
+
+            List<Integer> topCoord = new ArrayList<Integer>();
+            topCoord.add(2);
+            topCoord.add(2);
+            topCoord.add(2);
+            topCoord.add(2);
+
+            for(int i = 0; i < 4; i++){
+                multiChoice.get(i).setLeft(leftCoord.get(i));
+                multiChoice.get(i).setTop(topCoord.get(i));
+            }
 
         }
 

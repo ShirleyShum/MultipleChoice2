@@ -47,7 +47,5 @@
             android:layout_height="wrap_content"
             android:text="New Button4"
             android:id="@+id/choice_button4" />
-
-
     </LinearLayout>
 </LinearLayout>
