@@ -65,63 +65,6 @@ public class MainActivity extends ActionBarActivity {
             //Random number generator.
             Random generateMultiChoice = new Random();
 
-/*            for(int i = 0; i < multiChoice.length; i++){
-                int randomPosition = generateMultiChoice.nextInt(multiChoice.length);
-                Button temp = multiChoice[i];
-                multiChoice[i] = multiChoice[randomPosition];
-                multiChoice[randomPosition] = temp;
-            }
-*/
-
-            //return multiChoice;
-            //set the positions to the buttons in order
-            int[] values = new int[3];
-/*            values[0] = '1';
-            values[1] = '2';
-            values[2] = '3';
-            values[3] = '4';*/
-
-
-            //Assign X and Y coordinates to the random.
-/*            for(int i = 0; i <= (values.length); i++){
-                int positions = generateMultiChoice.nextInt(values.length);*/
-
-/*                int tempPosition = values[i];
-                values[i] = values[positions];
-                values[positions] = tempPosition;*/
-
-
-
-/*                choiceButton1.setLeft(2);
-                choiceButton1.setTop(2);
-                choiceButton2.setLeft(250);
-                choiceButton2.setTop(2);
-                choiceButton3.setLeft(2);
-                choiceButton3.setTop(2);
-                choiceButton4.setLeft(250);
-                choiceButton4.setTop(2);
-
-                }*/
-
-/*                if(positions == 0){
-                    choiceButton1.setLeft(2);
-                    choiceButton1.setTop(2);
-                    System.out.println("Button 1");
-                }else if (positions == 1){
-                    choiceButton2.setLeft(250);
-                    choiceButton2.setTop(2);
-                    System.out.println("Button 2");
-                }else if (positions == 2){
-                    choiceButton3.setLeft(2);
-                    choiceButton3.setTop(2);
-                    System.out.println("Button 3");
-                }else{
-                    choiceButton4.setLeft(250);
-                    choiceButton4.setTop(2);
-                    System.out.println("Button 4");
-                }
-
-            }*/
 
 /*            List<Integer> objects = new ArrayList<Integer>();
             objects.add(0);
@@ -151,26 +94,34 @@ public class MainActivity extends ActionBarActivity {
             multiChoice.add(choiceButton3);
             multiChoice.add(choiceButton4);
 
+/*            //Make an arrayList that holds four buttons.
+            List<Integer> multiChoice = new ArrayList<Integer>();
+            multiChoice.add(R.id.choice_button1);
+            multiChoice.add(R.id.choice_button2);
+            multiChoice.add(R.id.choice_button3);
+            multiChoice.add(R.id.choice_button4);*/
+
             //Shuffle collection
             Collections.shuffle(multiChoice);
 
+
             //Create an array of the possible coordinates.
             //Shuffle the array coordinates to the buttons using setLeft and setTop
-            List<Integer> leftCoord = new ArrayList<Integer>();
-            leftCoord.add(2);
-            leftCoord.add(250);
-            leftCoord.add(2);
-            leftCoord.add(250);
+            List<Integer> leftCoordinates = new ArrayList<Integer>();
+            leftCoordinates.add(2);
+            leftCoordinates.add(250);
+            leftCoordinates.add(2);
+            leftCoordinates.add(250);
 
-            List<Integer> topCoord = new ArrayList<Integer>();
-            topCoord.add(2);
-            topCoord.add(2);
-            topCoord.add(2);
-            topCoord.add(2);
+            List<Integer> topCoordinates = new ArrayList<Integer>();
+            topCoordinates.add(2);
+            topCoordinates.add(2);
+            topCoordinates.add(2);
+            topCoordinates.add(2);
 
-            for(int i = 0; i < 4; i++){
-                multiChoice.get(i).setLeft(leftCoord.get(i));
-                multiChoice.get(i).setTop(topCoord.get(i));
+            for(int i = 0; i < multiChoice.size(); i++){
+                multiChoice.get(i).setLeft(leftCoordinates.get(i));
+                multiChoice.get(i).setTop(topCoordinates.get(i));
             }
 
         }
@@ -237,6 +188,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 checkAnswer(false);
                 allButtonChoice();
+
             }
         });
 
@@ -255,6 +207,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 checkAnswer(false);
                 allButtonChoice();
+
             }
         });
 
@@ -262,6 +215,7 @@ public class MainActivity extends ActionBarActivity {
 
         updateQuestion();
         allButtonChoice();
+
 
 
 
