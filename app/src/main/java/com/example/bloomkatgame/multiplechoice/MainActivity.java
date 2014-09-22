@@ -1,164 +1,131 @@
 package com.example.bloomkatgame.multiplechoice;
 
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 
 
-public class MainActivity extends ActionBarActivity {
+        import android.app.Activity;
+// import android.support.v7.app.ActionBarActivity;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.Gravity;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.LinearLayout;
+        import android.widget.TextView;
+        import android.widget.Toast;
+
+        import java.lang.reflect.Array;
+        import java.util.ArrayList;
+        import java.util.Collections;
+        import java.util.List;
+        import java.util.Random;
+
+
+public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
 
-        //Declaring button variables
-        Button choiceButton1;
-        Button choiceButton2;
-        Button choiceButton3;
-        Button choiceButton4;
+    //Declaring button variables
+    Button choiceButton1;
+    Button choiceButton2;
+    Button choiceButton3;
+    Button choiceButton4;
 
-        TextView imageQuestion;
+    //declare isButtonCorrect outside of the function so that its values persist even after allButtonChoice() exits.
+    Boolean[] isButtonCorrect = new Boolean[4];
 
-        //Make an array of four buttons.
-        private static final int[] idButtonArray = {R.id.choice_button1,R.id.choice_button2, R.id.choice_button3, R.id.choice_button4};
-        private Button[] buttonArray = new Button[idButtonArray.length];
+    TextView imageQuestion;
+
+    //Make an array of four buttons.
+    private static final int[] idButtonArray = {R.id.choice_button1,R.id.choice_button2, R.id.choice_button3, R.id.choice_button4};
+    private Button[] buttonArray = new Button[idButtonArray.length];
 
     //The question that will be display.
-        TrueFalseChoices[] questionKey = new TrueFalseChoices[]{
-                new TrueFalseChoices(R.string.question_1, true),
-                new TrueFalseChoices(R.string.question_2, true),
-                new TrueFalseChoices(R.string.question_3, true),
-                new TrueFalseChoices(R.string.question_4, true),
-                new TrueFalseChoices(R.string.question_5, true)
-        };
+    TrueFalseChoices[] questionKey = new TrueFalseChoices[]{
+            new TrueFalseChoices(R.string.question_1, true),
+            new TrueFalseChoices(R.string.question_2, true),
+            new TrueFalseChoices(R.string.question_3, true),
+            new TrueFalseChoices(R.string.question_4, true),
+            new TrueFalseChoices(R.string.question_5, true)
+    };
 
-        //Create an array with AnswersChoiceOne constructor that holds choiceButton1 answers.
-        AnswersChoiceOne[] answerKeyOne = new AnswersChoiceOne[]{
-                new AnswersChoiceOne(R.string.answser_1, true),
-                new AnswersChoiceOne(R.string.answser_2, false),
-                new AnswersChoiceOne(R.string.answser_3, false),
-                new AnswersChoiceOne(R.string.answser_4, false)
-        };
+    //Create an array with AnswersChoiceOne constructor that holds choiceButton1 answers.
+    AnswersChoiceOne[] answerKeyOne = new AnswersChoiceOne[]{
+            new AnswersChoiceOne(R.string.answser_1, true),
+            new AnswersChoiceOne(R.string.answser_2, false),
+            new AnswersChoiceOne(R.string.answser_3, false),
+            new AnswersChoiceOne(R.string.answser_4, false)
+    };
 
-        Button[] multiChoice = new Button[3];
+    Button[] multiChoice = new Button[3];
 
-    //Assign each button an index in the array.
+
+    public void allButtonChoice(){
+        //Assign each button an index in the array.
         //the array that will hold the four buttons.
-        public void allButtonChoice(){
+        List<Button> multiChoice = new ArrayList<Button>();
+        multiChoice.add(choiceButton1);
+        multiChoice.add(choiceButton2);
+        multiChoice.add(choiceButton3);
+        multiChoice.add(choiceButton4);
 
-
-
-            //to output shuffled array in an randomized order.
-            //Random number generator.
-            Random generateMultiChoice = new Random();
-
-
-/*            List<Integer> objects = new ArrayList<Integer>();
-            objects.add(0);
-            objects.add(1);
-            objects.add(2);
-            objects.add(3);
-
-            //Shuffle collection
-            Collections.shuffle(objects);
-
-            List<Button> buttons = new ArrayList<Button>();
-            buttons.add((Button)findViewById(R.id.choice_button1));
-            buttons.add((Button)findViewById(R.id.choice_button2));
-            buttons.add((Button)findViewById(R.id.choice_button3));
-            buttons.add((Button)findViewById(R.id.choice_button4));
-
-            for (int i = 0; i < objects.size(); i++) {
-                buttons.get(i).setText(objects.get(i).toString());
-
-            }*/
-
-
-            //Make an arrayList that holds four buttons.
-            List<Button> multiChoice = new ArrayList<Button>();
-            multiChoice.add(choiceButton1);
-            multiChoice.add(choiceButton2);
-            multiChoice.add(choiceButton3);
-            multiChoice.add(choiceButton4);
-
-/*            //Make an arrayList that holds four buttons.
-            List<Integer> multiChoice = new ArrayList<Integer>();
-            multiChoice.add(R.id.choice_button1);
-            multiChoice.add(R.id.choice_button2);
-            multiChoice.add(R.id.choice_button3);
-            multiChoice.add(R.id.choice_button4);*/
-
-            //Shuffle collection
-            Collections.shuffle(multiChoice);
-
-
-            //Create an array of the possible coordinates.
-            //Shuffle the array coordinates to the buttons using setLeft and setTop
-            List<Integer> leftCoordinates = new ArrayList<Integer>();
-            leftCoordinates.add(2);
-            leftCoordinates.add(250);
-            leftCoordinates.add(2);
-            leftCoordinates.add(250);
-
-            List<Integer> topCoordinates = new ArrayList<Integer>();
-            topCoordinates.add(2);
-            topCoordinates.add(2);
-            topCoordinates.add(2);
-            topCoordinates.add(2);
-
-            for(int i = 0; i < multiChoice.size(); i++){
-                multiChoice.get(i).setLeft(leftCoordinates.get(i));
-                multiChoice.get(i).setTop(topCoordinates.get(i));
-            }
-
+        //buttonText is an array of Strings which contains the text for the four buttons
+        //Arranging the buttons.
+        String[] buttonTexts = new String[4];
+        List<Integer> indexPermutation = new ArrayList<Integer>();
+        for(int i = 0; i < 4; i++) {
+            buttonTexts[i] = String.format("Button %d", i + 1);
+            indexPermutation.add(i);
         }
 
-        //update imageQuestion
-        int currentIndex = 0;
+        //Assign buttonText randomly to each button
+        Collections.shuffle(indexPermutation);
 
-        private void updateQuestion(){
-            int question = questionKey[currentIndex].getImageQuestion();
-            imageQuestion.setText(question);
-            currentIndex = (currentIndex + 1) % questionKey.length;
-        }
-
-        //update imageAnswerOne
-        int answerOneCurrentIndex = 0;
-
-        private void updateAnswerOne(){
-            int answerOne = answerKeyOne[answerOneCurrentIndex].getImageAnswerOne();
-            choiceButton1.setText(answerOne);
-            answerOneCurrentIndex = (answerOneCurrentIndex + 1) % answerKeyOne.length;
+        //
+        for(int i = 0; i < 4; i++) {
+            multiChoice.get(i).setText(buttonTexts[indexPermutation.get(i)]);
+            //if a button gets the buttonTexts[0], then the corresponding element of isButtonCorrect gets set to true, otherwise it get set to false.
+            isButtonCorrect[i] = indexPermutation.get(i) == 0;
         }
 
 
+    }
 
-        //Check the answer of the imageQuestion
-        private void checkAnswer(boolean userPressedTrue){
-            boolean answerIsTrue = questionKey[currentIndex].isTrueQuestion();
+    //update imageQuestion
+    int currentIndex = 0;
 
-            int imageResId = 0;
+    private void updateQuestion(){
+        int question = questionKey[currentIndex].getImageQuestion();
+        imageQuestion.setText(question);
+        currentIndex = (currentIndex + 1) % questionKey.length;
+    }
 
-            if(userPressedTrue == answerIsTrue){
-                imageResId = R.string.correct_toast;
-            }else{
-                imageResId = R.string.incorrect_toast;
-            }
-            Toast.makeText(this, imageResId, Toast.LENGTH_SHORT).show();
+    //update imageAnswerOne
+    int answerOneCurrentIndex = 0;
+
+    private void updateAnswerOne(){
+        int answerOne = answerKeyOne[answerOneCurrentIndex].getImageAnswerOne();
+        choiceButton1.setText(answerOne);
+        answerOneCurrentIndex = (answerOneCurrentIndex + 1) % answerKeyOne.length;
+    }
+
+
+
+    //Check the answer of the imageQuestion
+    private void checkAnswer(boolean userPressedTrue){
+        boolean answerIsTrue = questionKey[currentIndex].isTrueQuestion();
+
+        int imageResId = 0;
+
+        if(userPressedTrue == answerIsTrue){
+            imageResId = R.string.correct_toast;
+        }else{
+            imageResId = R.string.incorrect_toast;
         }
+        Toast.makeText(this, imageResId, Toast.LENGTH_SHORT).show();
+    }
 
 
     @Override
@@ -176,7 +143,8 @@ public class MainActivity extends ActionBarActivity {
         choiceButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(true);
+                //each button handler checks its corresponding value in isButtonCorrect
+                checkAnswer(isButtonCorrect[0]);
                 updateQuestion();
                 allButtonChoice();
 
@@ -186,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
         choiceButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(false);
+                checkAnswer(isButtonCorrect[1]);
                 allButtonChoice();
 
             }
@@ -196,7 +164,7 @@ public class MainActivity extends ActionBarActivity {
         choiceButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(false);
+                checkAnswer(isButtonCorrect[2]);
                 allButtonChoice();
             }
         });
@@ -205,20 +173,14 @@ public class MainActivity extends ActionBarActivity {
         choiceButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(false);
+                checkAnswer(isButtonCorrect[3]);
                 allButtonChoice();
 
             }
         });
 
-
-
         updateQuestion();
         allButtonChoice();
-
-
-
-
     }
 
     @Override
