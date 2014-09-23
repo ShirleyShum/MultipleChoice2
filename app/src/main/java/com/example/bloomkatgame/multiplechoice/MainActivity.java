@@ -1,5 +1,6 @@
 package com.example.bloomkatgame.multiplechoice;
 
+import android.media.Image;
 import android.util.Log;
 
 
@@ -12,7 +13,8 @@ import android.util.Log;
         import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
-        import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -36,7 +38,7 @@ public class MainActivity extends Activity {
     //declare isButtonCorrect outside of the function so that its values persist even after allButtonChoice() exits.
     Boolean[] isButtonCorrect = new Boolean[4];
 
-    TextView imageQuestion;
+    ImageView imageQuestion;
 
     //Make an array of four buttons.
     private static final int[] idButtonArray = {R.id.choice_button1,R.id.choice_button2, R.id.choice_button3, R.id.choice_button4};
@@ -44,20 +46,20 @@ public class MainActivity extends Activity {
 
     //The question that will be display.
     TrueFalseChoices[] questionKey = new TrueFalseChoices[]{
-            new TrueFalseChoices(R.string.question_1, true),
-            new TrueFalseChoices(R.string.question_2, true),
-            new TrueFalseChoices(R.string.question_3, true),
-            new TrueFalseChoices(R.string.question_4, true),
-            new TrueFalseChoices(R.string.question_5, true)
+            new TrueFalseChoices(R.drawable.apple, true),
+            new TrueFalseChoices(R.drawable.orange, true),
+            new TrueFalseChoices(R.drawable.grape, true),
+            new TrueFalseChoices(R.drawable.peach, true),
+            new TrueFalseChoices(R.drawable.strawberry, true)
     };
-
+/*
     //Create an array with AnswersChoiceOne constructor that holds choiceButton1 answers.
     AnswersChoiceOne[] answerKeyOne = new AnswersChoiceOne[]{
             new AnswersChoiceOne(R.string.answser_1, true),
             new AnswersChoiceOne(R.string.answser_2, false),
             new AnswersChoiceOne(R.string.answser_3, false),
             new AnswersChoiceOne(R.string.answser_4, false)
-    };
+    };*/
 
     Button[] multiChoice = new Button[3];
 
@@ -98,10 +100,10 @@ public class MainActivity extends Activity {
 
     private void updateQuestion(){
         int question = questionKey[currentIndex].getImageQuestion();
-        imageQuestion.setText(question);
+        imageQuestion.setImageResource(question);
         currentIndex = (currentIndex + 1) % questionKey.length;
     }
-
+/*
     //update imageAnswerOne
     int answerOneCurrentIndex = 0;
 
@@ -109,7 +111,7 @@ public class MainActivity extends Activity {
         int answerOne = answerKeyOne[answerOneCurrentIndex].getImageAnswerOne();
         choiceButton1.setText(answerOne);
         answerOneCurrentIndex = (answerOneCurrentIndex + 1) % answerKeyOne.length;
-    }
+    }*/
 
 
 
@@ -135,7 +137,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_game);
 
         //wiring the imageQuestion
-        imageQuestion = (TextView)findViewById(R.id.image_view);
+        imageQuestion = (ImageView)findViewById(R.id.image_view);
 
         //wiring the buttons
         choiceButton1 = (Button)findViewById(R.id.choice_button1);
