@@ -18,7 +18,9 @@ import android.widget.LinearLayout;
         import android.widget.TextView;
         import android.widget.Toast;
 
-        import java.lang.reflect.Array;
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
         import java.util.ArrayList;
         import java.util.Collections;
         import java.util.List;
@@ -38,7 +40,11 @@ public class MainActivity extends Activity {
     //declare isButtonCorrect outside of the function so that its values persist even after allButtonChoice() exits.
     Boolean[] isButtonCorrect = new Boolean[4];
 
+    //this variable will hold the image questions that will be display in the middle of the app.
     ImageView imageQuestion;
+
+    //This variable will hold the first image button. Later, this will be change to ImageView.
+    TextView imageAnswerOne;
 
     //Make an array of four buttons.
     private static final int[] idButtonArray = {R.id.choice_button1,R.id.choice_button2, R.id.choice_button3, R.id.choice_button4};
@@ -52,18 +58,18 @@ public class MainActivity extends Activity {
             new TrueFalseChoices(R.drawable.peach, true),
             new TrueFalseChoices(R.drawable.strawberry, true)
     };
-/*
     //Create an array with AnswersChoiceOne constructor that holds choiceButton1 answers.
     AnswersChoiceOne[] answerKeyOne = new AnswersChoiceOne[]{
-            new AnswersChoiceOne(R.string.answser_1, true),
-            new AnswersChoiceOne(R.string.answser_2, false),
-            new AnswersChoiceOne(R.string.answser_3, false),
-            new AnswersChoiceOne(R.string.answser_4, false)
-    };*/
+            new AnswersChoiceOne(R.string.apple_answer, true),
+            new AnswersChoiceOne(R.string.orange_answer, true),
+            new AnswersChoiceOne(R.string.grape_answer, true),
+            new AnswersChoiceOne(R.string.peach_answer, true),
+            new AnswersChoiceOne(R.string.strawberry_answer, true)
+    };
 
-    Button[] multiChoice = new Button[3];
+    //Button[] multiChoice = new Button[3];
 
-
+    //This method is to shuffle the four buttons.
     public void allButtonChoice(){
         //Assign each button an index in the array.
         //the array that will hold the four buttons.
@@ -103,7 +109,6 @@ public class MainActivity extends Activity {
         imageQuestion.setImageResource(question);
         currentIndex = (currentIndex + 1) % questionKey.length;
     }
-/*
     //update imageAnswerOne
     int answerOneCurrentIndex = 0;
 
@@ -111,7 +116,7 @@ public class MainActivity extends Activity {
         int answerOne = answerKeyOne[answerOneCurrentIndex].getImageAnswerOne();
         choiceButton1.setText(answerOne);
         answerOneCurrentIndex = (answerOneCurrentIndex + 1) % answerKeyOne.length;
-    }*/
+    }
 
 
 
@@ -123,10 +128,13 @@ public class MainActivity extends Activity {
 
         if(userPressedTrue == answerIsTrue){
             imageResId = R.string.correct_toast;
+            updateQuestion();
         }else{
             imageResId = R.string.incorrect_toast;
         }
         Toast.makeText(this, imageResId, Toast.LENGTH_SHORT).show();
+
+
     }
 
 
@@ -147,7 +155,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 //each button handler checks its corresponding value in isButtonCorrect
                 checkAnswer(isButtonCorrect[0]);
-                updateQuestion();
+                //updateQuestion();
                 allButtonChoice();
 
             }
